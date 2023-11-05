@@ -1,27 +1,88 @@
-# TodoList
+* Angular :
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+* angular\todo-list- project
+ test examples
+ standalone
 
-## Development server
+[Tutoriel Angular] De l'architecture aux tests : réalisation d'une application pas à pas [2023] :
+https://www.youtube.com/watch?v=zSC5Qwso304&list=PLoJjTQR8kQTdNDtcza3PSQNB17rg-59ca
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1) create a new project
+https://www.thisdot.co/blog/how-to-create-standalone-components-in-angular/
+ng new todo-list- --routing --style css
+ng generate component check-list --inline-template=false --standalone
 
-## Code scaffolding
+2) get rid of the modules and use stand alone component :
+https://www.thisdot.co/blog/how-to-create-standalone-components-in-angular/#using-standalone-components
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3) routing with standalone
+https://ultimatecourses.com/blog/setup-router-with-angular-standalone-components
+* angular\todo-list-\src\app\router\index.ts
+* angular\todo-list-\src\main.ts
+* angular\todo-list-\src\app\app.component.ts
 
-## Build
+4) unit test basics
+to do : fixe : jest could not be installed for the moment it is jasmine
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Auto completion :
+todo-list-\src\app\check-list\check-list.component.spec.ts
 
-## Running unit tests
+4.1) Cannot find name 'describe'. Do you need to install type definitions for a test runner? :
+https://stackoverflow.com/questions/39020022/angular-2-unit-tests-cannot-find-name-describe
+import {} from 'jasmine'; 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5) injecting a service for unit test
+* angular\todo-list-\src\app\service\todo-list.service.ts
+* angular\todo-list-\src\app\service\todo-list-fake.service.ts
+* since angular 16 use inject and not constructor 
+todo-list-\src\app\check-list\check-list.component.ts
 
-## Running end-to-end tests
+* on the unit test part check this file as a reference
+todo-list-\src\app\check-list\check-list.component.spec.ts
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+6) video about signals and rxjs
+https://www.youtube.com/watch?v=oqYQG7QMdzw&list=PLErOmyzRKOCr07Kcnx75Aqh6PWSbIokPB
+* worth a try to check how to transform observable from the service and not from the component
+and to switch from function to variable.
+* toSignal method
+ todo-list-\src\app\check-list\check-list.component.ts
 
-## Further help
+7) example crud with services http client and observable :
+https://angular.io/tutorial/tour-of-heroes/toh-pt6  
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+8) import httpclient in a standalone angular app
+https://this-is-angular.github.io/angular-guides/docs/standalone-apis/using-the-httpclient-in-a-standalone-angular-application
+
+9) rxjs basics
+get request with loading, and error management from a service
+https://blog.dai.codes/handling-http-loadng-states-in-angular-with-rxjs/
+
+10) rxjs refresh data after post request
+https://www.youtube.com/watch?v=mo323v1xpS4
+* angular\todo-list\src\app\check-list\check-list.component.ts
+
+
+--------------------------------------------------------------------------------------------------------
+
+* pokemons angular app
+video youtube pokemon 3h18
+
+1) project created 
+2) components folder
+├── src/
+│   ├── app/
+│       ├── components/
+│           ├── pokemons/
+│               ├── pokemon-list/
+│               ├── pokemon-list/
+│       ├── pipes/
+│           ├── pokemon-types-color.pipe/
+
+
+
+ng generate component pokemon-list --inline-template=false --standalone
+ng generate component app-empty-list-message --inline-template=false --standalone
+ng generate component pokemon-card --inline-template=false --standalone
+3) unit test
+* pokemons\src\app\components\pokemons\pokemon-list\pokemon-list.component.spec.ts
+* pokemons\src\app\pipes\pokemon-types-color.pipe.ts
