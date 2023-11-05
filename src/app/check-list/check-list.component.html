@@ -1,0 +1,40 @@
+<h1>
+    Check-list
+</h1>
+
+<div>
+    <input id="inputTask" type="text" #task placeholder="ex: faire les courses">
+    <button id="buttonAddTask" (click)="addTask(task.value)">Ajouter</button>
+</div>
+
+<ng-container *ngIf="todos$() as data">
+    <h3 *ngIf="data.isLoading">
+        Chargement...
+    </h3>
+
+    <div *ngIf="data.error">
+        <pre *ngIf="data.error.status === +'404'">
+            404 - Not found
+        </pre>
+    </div>
+
+    <div *ngIf="data.value">
+
+        <div 
+            id="no-task-div" 
+            *ngIf="data.value.taksList.length === 0"
+        >
+            il n'y a pas de tâches
+        </div>
+
+        <div *ngFor="let task of data.value.taksList">
+            <input id="checkboxTasks" type="checkbox">
+            <span>{{ task.name }}</span>
+            <button class="buttonDeleteTask" (click)="deleteTask(task.id)">Supprimer {{task.id}}</button>
+        </div>
+    </div>
+  </ng-container>
+ 
+
+
+  
