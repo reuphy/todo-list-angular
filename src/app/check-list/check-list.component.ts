@@ -5,10 +5,11 @@ import { Todo, TodoListFakeService } from './../service/todo-list-fake.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
+import { TestComponent } from '../test/test.component';
 @Component({
   selector: 'app-check-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TestComponent],
   templateUrl: './check-list.component.html',
   styleUrls: ['./check-list.component.css']
 })
